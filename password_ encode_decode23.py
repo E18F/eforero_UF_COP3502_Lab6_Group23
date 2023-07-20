@@ -10,15 +10,12 @@ def encode(pwrd):
 
     return encrypted_pwrd
 
+def decode(passwd):
+    s_to_int = [(int(i) - 3) % 10 for i in passwd]
+    out = [str(i) for i in s_to_int]
+    out_1 = "".join(out)
+    return out_1
 
-def decode(pwrd):
-    decoded_pwrd = ''
-
-    for n in pwrd:
-        num = (int(n) - 3) % 10
-        decoded_pwrd += str(num)
-
-    return decoded_pwrd
 
 
 # User input menu
@@ -46,7 +43,8 @@ def main():
             print()
 
         if option == 2:
-            print(f'The encoded password is {encrypted_pwrd}, and the original password is {pwrd}.')
+            original = decode(encrypted_pwrd)
+            print(f'The encoded password is {encrypted_pwrd}, and the original password is {original}.')
             print() 
 
     # option 3 to exit the program
